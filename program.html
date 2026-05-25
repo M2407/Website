@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Interiors — Crafted Spaces, Timeless Stories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F7F4EE;
+    --warm-white: #FDFBF7;
+    --sand: #E8DFD0;
+    --stone: #C4B9A8;
+    --bronze: #8B6E4E;
+    --deep: #2C2519;
+    --text: #3D3328;
+    --muted: #7A6E63;
+    --accent: #A07850;
+    --gold: #C49A5A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,251,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--deep);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); font-style: italic; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--deep);
+    color: var(--cream) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--cream) !important; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 70px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8vw 5vw 8vw 8vw;
+    background: var(--warm-white);
+  }
+  .hero-tag {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+  }
+  .hero-h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 1rem; color: var(--muted); line-height: 1.75;
+    max-width: 440px; margin-bottom: 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--deep); color: var(--cream);
+    padding: 0.9rem 2.2rem; font-size: 0.82rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: background 0.25s;
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-outline {
+    border: 1px solid var(--stone); color: var(--text);
+    padding: 0.9rem 2.2rem; font-size: 0.82rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: transparent; cursor: pointer; text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    padding-top: 2rem; border-top: 1px solid var(--sand);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600; color: var(--deep); display: block;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+
+  .hero-right {
+    background: var(--cream);
+    position: relative; overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .hero-img {
+    background: var(--sand);
+    position: relative; overflow: hidden;
+  }
+  .hero-img:first-child { grid-row: 1 / 3; }
+  .hero-img svg { width: 100%; height: 100%; }
+
+  /* SECTION COMMON */
+  section { padding: 7rem 8vw; }
+  .section-tag {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300; color: var(--deep); line-height: 1.15;
+  }
+  .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 560px; margin-top: 1rem; }
+
+  /* SERVICES */
+  #services { background: var(--cream); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 3.5rem;
+  }
+  .service-card {
+    background: var(--warm-white);
+    padding: 2.5rem 2rem;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+  .service-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .service-icon {
+    width: 48px; height: 48px; margin-bottom: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .service-icon svg { width: 36px; height: 36px; stroke: var(--accent); }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; margin-bottom: 0.75rem; color: var(--deep);
+  }
+  .service-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
+
+  /* PROJECTS */
+  #projects { background: var(--warm-white); }
+  .proj-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 380px 280px;
+    gap: 12px;
+  }
+  .proj-card {
+    position: relative; overflow: hidden; cursor: pointer;
+    background: var(--sand);
+  }
+  .proj-card:first-child { grid-column: 1 / 3; }
+  .proj-card:nth-child(4) { grid-column: 2 / 4; }
+  .proj-card svg { width: 100%; height: 100%; object-fit: cover; }
+  .proj-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(44,37,25,0.85) 0%, transparent 60%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 1.75rem;
+    opacity: 0; transition: opacity 0.35s;
+  }
+  .proj-card:hover .proj-overlay { opacity: 1; }
+  .proj-tag-label {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.4rem;
+  }
+  .proj-title-overlay {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--cream);
+  }
+  .proj-loc { font-size: 0.8rem; color: var(--stone); margin-top: 0.3rem; }
+  .proj-label {
+    position: absolute; top: 1.2rem; left: 1.2rem;
+    background: rgba(44,37,25,0.7); backdrop-filter: blur(8px);
+    padding: 0.35rem 0.85rem;
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--cream);
+  }
+
+  /* PROCESS */
+  #process { background: var(--deep); color: var(--cream); }
+  #process .section-title { color: var(--cream); }
+  #process .section-sub { color: var(--stone); }
+  #process .section-tag { color: var(--gold); }
+  #process .section-tag::before { background: var(--gold); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-top: 3.5rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute;
+    top: 28px; left: 14%; right: 14%;
+    height: 1px; background: var(--bronze);
+    z-index: 0;
+  }
+  .process-step { padding: 0 2rem; text-align: center; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 1px solid var(--bronze);
+    background: var(--deep);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--gold);
+    position: relative; z-index: 1;
+  }
+  .step-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; color: var(--cream); margin-bottom: 0.75rem;
+  }
+  .step-desc { font-size: 0.83rem; color: var(--stone); line-height: 1.75; }
+
+  /* BLOG */
+  #blog { background: var(--cream); }
+  .blog-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; margin-top: 3rem;
+  }
+  .blog-card {
+    background: var(--warm-white);
+    overflow: hidden;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  .blog-card:hover { transform: translateY(-6px); }
+  .blog-img {
+    height: 200px; background: var(--sand); overflow: hidden;
+  }
+  .blog-img svg { width: 100%; height: 100%; }
+  .blog-body { padding: 1.5rem; }
+  .blog-cat {
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .blog-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; line-height: 1.35;
+    color: var(--deep); margin-bottom: 0.75rem;
+  }
+  .blog-excerpt { font-size: 0.84rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+  .blog-meta { font-size: 0.75rem; color: var(--stone); }
+
+  /* REVIEWS */
+  #reviews { background: var(--warm-white); }
+  .reviews-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+  .review-score-box {
+    background: var(--cream); padding: 2.5rem;
+    text-align: center; border-top: 4px solid var(--gold);
+  }
+  .score-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 600; color: var(--deep); line-height: 1;
+  }
+  .score-stars { color: var(--gold); font-size: 1.4rem; margin: 0.5rem 0; letter-spacing: 0.1em; }
+  .score-count { font-size: 0.8rem; color: var(--muted); }
+  .score-bars { margin-top: 1.5rem; text-align: left; }
+  .score-bar-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+  .score-bar-label { font-size: 0.75rem; color: var(--muted); min-width: 12px; }
+  .score-bar-track { flex: 1; height: 4px; background: var(--sand); border-radius: 2px; }
+  .score-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; }
+  .reviews-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .review-item {
+    background: var(--cream); padding: 2rem;
+    border-left: 3px solid var(--gold);
+  }
+  .review-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.75rem; }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-style: italic; line-height: 1.75; color: var(--deep);
+    margin-bottom: 1rem;
+  }
+  .review-meta { display: flex; gap: 1rem; align-items: center; }
+  .reviewer-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--stone); display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 500; color: var(--warm-white);
+    flex-shrink: 0;
+  }
+  .reviewer-name { font-size: 0.85rem; font-weight: 500; color: var(--deep); }
+  .reviewer-project { font-size: 0.75rem; color: var(--muted); }
+
+  /* CONTACT */
+  #contact { background: var(--deep); }
+  #contact .section-tag { color: var(--gold); }
+  #contact .section-tag::before { background: var(--gold); }
+  #contact .section-title { color: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; }
+  .contact-info-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; }
+  .contact-icon {
+    width: 44px; height: 44px; background: rgba(255,255,255,0.06);
+    border: 1px solid var(--bronze);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; }
+  .contact-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.3rem; }
+  .contact-value { font-size: 0.95rem; color: var(--cream); }
+  .contact-social { display: flex; gap: 0.75rem; margin-top: 2rem; }
+  .social-btn {
+    width: 42px; height: 42px; border: 1px solid var(--bronze);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.25s;
+    background: transparent;
+  }
+  .social-btn:hover { background: var(--gold); border-color: var(--gold); }
+  .social-btn svg { width: 18px; height: 18px; stroke: var(--stone); fill: none; }
+  .social-btn:hover svg { stroke: var(--deep); }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); }
+  .form-group input, .form-group textarea, .form-group select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--bronze);
+    color: var(--cream);
+    padding: 0.85rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    resize: none; outline: none;
+    transition: border-color 0.25s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted); }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
+  .form-group select option { background: var(--deep); color: var(--cream); }
+  .btn-submit {
+    background: var(--gold); color: var(--deep);
+    padding: 1rem 2rem; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+    font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: background 0.25s; align-self: flex-start;
+  }
+  .btn-submit:hover { background: var(--accent); color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    background: #1A1510; padding: 3rem 8vw;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(196,154,90,0.2);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; color: var(--cream);
+  }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+  .footer-copy { font-size: 0.78rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* CHAT WIDGET */
+  #chat-btn {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: var(--deep); border: 2px solid var(--gold);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 24px rgba(44,37,25,0.25);
+    transition: transform 0.2s;
+  }
+  #chat-btn:hover { transform: scale(1.08); }
+  #chat-btn svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; }
+  #chat-panel {
+    position: fixed; bottom: 6rem; right: 2rem; z-index: 998;
+    width: 340px; background: var(--warm-white);
+    border: 1px solid var(--sand);
+    box-shadow: 0 16px 48px rgba(44,37,25,0.15);
+    display: none; flex-direction: column;
+    max-height: 460px;
+    overflow: hidden;
+  }
+  #chat-panel.open { display: flex; }
+  .chat-header {
+    background: var(--deep); padding: 1rem 1.25rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .chat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--cream);
+  }
+  .chat-status { display: flex; align-items: center; gap: 0.4rem; font-size: 0.7rem; color: var(--stone); }
+  .chat-dot { width: 7px; height: 7px; background: #5DC87A; border-radius: 50%; }
+  .chat-close { background: none; border: none; cursor: pointer; color: var(--stone); font-size: 1.2rem; }
+  .chat-messages { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
+  .msg {
+    padding: 0.65rem 0.9rem; font-size: 0.84rem; line-height: 1.6; max-width: 85%;
+  }
+  .msg-bot { background: var(--cream); color: var(--text); align-self: flex-start; }
+  .msg-user { background: var(--deep); color: var(--cream); align-self: flex-end; }
+  .chat-input-row {
+    display: flex; border-top: 1px solid var(--sand);
+  }
+  #chat-input {
+    flex: 1; padding: 0.85rem 1rem; border: none; outline: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.84rem;
+    background: var(--warm-white); color: var(--text);
+  }
+  #chat-send {
+    background: var(--deep); border: none; cursor: pointer;
+    width: 46px; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  #chat-send:hover { background: var(--accent); }
+  #chat-send svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .services-grid, .projects-grid, .blog-grid, .contact-grid { grid-template-columns: 1fr; }
+    .reviews-layout { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .projects-grid { grid-template-rows: auto; }
+    .proj-card:first-child, .proj-card:nth-child(4) { grid-column: 1; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Aura <span>Interiors</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#blog">Journal</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Award-winning studio since 2011</div>
+    <h1 class="hero-h1">We design spaces that <em>move</em> you</h1>
+    <p class="hero-sub">Aura Interiors crafts living and commercial spaces that blend timeless aesthetics with modern functionality — from concept to completion.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Our Work</a>
+      <a href="#contact" class="btn-outline">Start a Project</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">180+</span>
+        <span class="stat-label">Projects Completed</span>
+      </div>
+      <div>
+        <span class="stat-num">14</span>
+        <span class="stat-label">Design Awards</span>
+      </div>
+      <div>
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Client Satisfaction</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Illustrated interior panels -->
+    <div class="hero-img">
+      <svg viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="500" fill="#DDD5C4"/>
+        <rect x="0" y="350" width="300" height="150" fill="#C9BCA8"/>
+        <rect x="20" y="60" width="140" height="200" fill="#E8DFD0" opacity=".7"/>
+        <rect x="30" y="70" width="120" height="180" fill="#F7F4EE" opacity=".5"/>
+        <rect x="180" y="80" width="80" height="180" fill="rgba(139,110,78,0.2)"/>
+        <rect x="60" y="370" width="80" height="100" fill="#B8AB97"/>
+        <rect x="155" y="390" width="120" height="80" fill="#C4B9A8"/>
+        <circle cx="90" cy="310" r="40" fill="rgba(139,110,78,0.15)"/>
+        <rect x="70" y="270" width="40" height="80" fill="#B8AB97" opacity=".6"/>
+        <line x1="0" x2="300" y1="350" y2="350" stroke="#B8AB97" stroke-width="1"/>
+        <rect x="10" y="20" width="80" height="30" fill="rgba(247,244,238,0.6)"/>
+      </svg>
+    </div>
+    <div class="hero-img">
+      <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="250" fill="#E8DFD0"/>
+        <rect x="0" y="160" width="300" height="90" fill="#C9BCA8"/>
+        <rect x="30" y="30" width="240" height="130" fill="#F0EBE2" opacity=".8"/>
+        <rect x="50" y="50" width="80" height="100" fill="#DDD5C4"/>
+        <rect x="170" y="50" width="80" height="100" fill="#DDD5C4"/>
+        <rect x="60" y="170" width="180" height="50" fill="#B8AB97"/>
+        <circle cx="150" cy="90" r="18" fill="rgba(196,154,90,0.3)"/>
+      </svg>
+    </div>
+    <div class="hero-img">
+      <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="250" fill="#C9BCA8"/>
+        <rect x="0" y="0" width="300" height="160" fill="#E8DFD0"/>
+        <rect x="20" y="180" width="260" height="60" fill="#B8AB97"/>
+        <circle cx="80" cy="80" r="50" fill="#DDD5C4" opacity=".7"/>
+        <rect x="160" y="30" width="100" height="140" fill="#F0EBE2" opacity=".6"/>
+        <rect x="0" y="160" width="300" height="4" fill="#A07850" opacity=".4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">What we offer</div>
+  <h2 class="section-title">Our Design Services</h2>
+  <p class="section-sub">From a single room refresh to a full commercial build-out, we tailor every engagement to your vision and lifestyle.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="service-name">Residential Design</div>
+      <p class="service-desc">Complete home interiors — from open-plan living to intimate bedroom retreats. We blend your personality with spatial intelligence.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="service-name">Commercial Spaces</div>
+      <p class="service-desc">Offices, showrooms, restaurants, and retail — spaces designed to perform beautifully and inspire the people who inhabit them.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+      </div>
+      <div class="service-name">3D Visualization</div>
+      <p class="service-desc">Photorealistic renders before a single nail is driven. Experience your space fully realized before construction begins.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <div class="service-name">Custom Furniture</div>
+      <p class="service-desc">Bespoke pieces crafted by skilled artisans — designed by us, built for your exact space, proportions, and material palette.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="service-name">Project Management</div>
+      <p class="service-desc">We handle contractors, timelines, and procurement end-to-end so you can focus on the excitement of your transformation.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      </div>
+      <div class="service-name">Styling & Staging</div>
+      <p class="service-desc">Art curation, soft furnishings, lighting, and accessories — the final layer that transforms a room into a story.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="proj-header">
+    <div>
+      <div class="section-tag">Our portfolio</div>
+      <h2 class="section-title">Real Projects,<br>Real Transformations</h2>
+    </div>
+    <a href="#contact" class="btn-outline">Discuss Your Project →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="600" height="380" fill="#C9BCA8"/>
+        <rect x="0" y="220" width="600" height="160" fill="#B8AB97"/>
+        <rect x="0" y="0" width="600" height="220" fill="#DDD5C4"/>
+        <rect x="40" y="40" width="200" height="180" fill="#E8DFD0" opacity=".7"/>
+        <rect x="260" y="40" width="160" height="180" fill="#E8DFD0" opacity=".5"/>
+        <rect x="440" y="40" width="120" height="180" fill="#C9BCA8"/>
+        <rect x="0" y="218" width="600" height="4" fill="#A07850" opacity=".3"/>
+        <rect x="60" y="240" width="140" height="110" fill="#D5CABC"/>
+        <rect x="220" y="270" width="200" height="80" fill="#C4B9A8"/>
+        <rect x="430" y="250" width="130" height="100" fill="#D5CABC"/>
+        <circle cx="300" cy="100" r="30" fill="rgba(196,154,90,0.2)"/>
+      </svg>
+      <div class="proj-label">Featured</div>
+      <div class="proj-overlay">
+        <div class="proj-tag-label">Residential · 2024</div>
+        <div class="proj-title-overlay">The Meridian Penthouse</div>
+        <div class="proj-loc">📍 Hyderabad, Telangana</div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="380" fill="#E8DFD0"/>
+        <rect x="0" y="240" width="300" height="140" fill="#C9BCA8"/>
+        <rect x="20" y="20" width="260" height="220" fill="#F0EBE2"/>
+        <rect x="40" y="40" width="100" height="180" fill="#DDD5C4" opacity=".8"/>
+        <rect x="160" y="40" width="100" height="180" fill="#DDD5C4" opacity=".6"/>
+        <rect x="30" y="260" width="240" height="80" fill="#C4B9A8"/>
+        <circle cx="150" cy="140" r="25" fill="rgba(139,110,78,0.2)"/>
+      </svg>
+      <div class="proj-overlay">
+        <div class="proj-tag-label">Commercial · 2024</div>
+        <div class="proj-title-overlay">Bloom Café</div>
+        <div class="proj-loc">📍 Bengaluru, Karnataka</div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="280" fill="#DDD5C4"/>
+        <rect x="0" y="180" width="300" height="100" fill="#C9BCA8"/>
+        <rect x="0" y="0" width="300" height="180" fill="#C9BCA8" opacity=".5"/>
+        <rect x="20" y="20" width="260" height="160" fill="#E8DFD0" opacity=".6"/>
+        <rect x="40" y="190" width="100" height="70" fill="#B8AB97"/>
+        <rect x="160" y="210" width="120" height="50" fill="#D5CABC"/>
+      </svg>
+      <div class="proj-overlay">
+        <div class="proj-tag-label">Residential · 2023</div>
+        <div class="proj-title-overlay">Lakeview Residence</div>
+        <div class="proj-loc">📍 Pune, Maharashtra</div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="600" height="280" fill="#B8AB97"/>
+        <rect x="0" y="0" width="600" height="180" fill="#C9BCA8"/>
+        <rect x="30" y="20" width="540" height="160" fill="#DDD5C4" opacity=".6"/>
+        <rect x="50" y="40" width="120" height="120" fill="#E8DFD0"/>
+        <rect x="200" y="40" width="180" height="120" fill="#E8DFD0" opacity=".8"/>
+        <rect x="410" y="40" width="140" height="120" fill="#E8DFD0" opacity=".6"/>
+        <rect x="0" y="178" width="600" height="4" fill="#A07850" opacity=".3"/>
+        <rect x="80" y="192" width="440" height="70" fill="#C9BCA8"/>
+      </svg>
+      <div class="proj-overlay">
+        <div class="proj-tag-label">Office · 2023</div>
+        <div class="proj-title-overlay">Nexus HQ Workspace</div>
+        <div class="proj-loc">📍 Chennai, Tamil Nadu</div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="280" fill="#E0D8CC"/>
+        <rect x="0" y="190" width="300" height="90" fill="#C4B9A8"/>
+        <rect x="0" y="0" width="300" height="190" fill="#D5CABC"/>
+        <rect x="20" y="20" width="260" height="170" fill="#EDE7DC" opacity=".7"/>
+        <circle cx="150" cy="100" r="60" fill="#C9BCA8" opacity=".5"/>
+        <rect x="60" y="200" width="180" height="60" fill="#B8AB97"/>
+      </svg>
+      <div class="proj-overlay">
+        <div class="proj-tag-label">Hospitality · 2022</div>
+        <div class="proj-title-overlay">The Ivory Boutique Hotel</div>
+        <div class="proj-loc">📍 Goa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-tag">How we work</div>
+  <h2 class="section-title">Our Design Process</h2>
+  <p class="section-sub">A structured yet flexible approach that keeps you in the loop at every milestone.</p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-name">Discovery</div>
+      <p class="step-desc">We listen deeply — your lifestyle, tastes, budget, and aspirations shape every decision we'll make together.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-name">Concept</div>
+      <p class="step-desc">Mood boards, spatial layouts, and material palettes — the vision takes shape before any construction begins.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-name">Design Development</div>
+      <p class="step-desc">Detailed drawings, 3D renders, and specification documents — everything contractors need to build with precision.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-name">Execution & Handover</div>
+      <p class="step-desc">We supervise execution, handle snags, and hand over a space that matches the vision down to the last detail.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-tag">Our Journal</div>
+  <h2 class="section-title">Insights & Inspiration</h2>
+  <p class="section-sub">Design thinking, project stories, and ideas to help you live more beautifully.</p>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-img">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="200" fill="#DDD5C4"/>
+          <rect x="0" y="130" width="400" height="70" fill="#C9BCA8"/>
+          <rect x="20" y="20" width="160" height="110" fill="#E8DFD0" opacity=".7"/>
+          <rect x="200" y="20" width="180" height="110" fill="#C9BCA8" opacity=".7"/>
+          <circle cx="200" cy="75" r="25" fill="rgba(196,154,90,0.3)"/>
+        </svg>
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Biophilic Design</div>
+        <div class="blog-title">How Bringing Nature Indoors Transformed Our Most Recent Project</div>
+        <p class="blog-excerpt">Stone, water, and live plants weren't just decorative choices — they became the structural language of this Bengaluru home.</p>
+        <div class="blog-meta">Priya Sharma · 12 May 2025 · 6 min read</div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="200" fill="#C9BCA8"/>
+          <rect x="0" y="0" width="400" height="130" fill="#E8DFD0"/>
+          <rect x="30" y="20" width="340" height="110" fill="#F0EBE2" opacity=".6"/>
+          <rect x="50" y="40" width="80" height="80" fill="#DDD5C4"/>
+          <rect x="160" y="40" width="180" height="80" fill="#DDD5C4" opacity=".7"/>
+          <rect x="0" y="130" width="400" height="70" fill="#B8AB97"/>
+        </svg>
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Material Trends</div>
+        <div class="blog-title">Terrazzo is Back — And We Are Completely Here for It</div>
+        <p class="blog-excerpt">The reemergence of this 15th-century flooring technique in contemporary Indian homes and why we're specifying it on every new project.</p>
+        <div class="blog-meta">Arjun Mehta · 3 Apr 2025 · 5 min read</div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="200" fill="#E8DFD0"/>
+          <rect x="0" y="140" width="400" height="60" fill="#C4B9A8"/>
+          <circle cx="200" cy="80" r="70" fill="#DDD5C4" opacity=".6"/>
+          <rect x="120" y="40" width="160" height="110" fill="#E0D8CC" opacity=".7"/>
+          <rect x="140" y="150" width="120" height="40" fill="#B8AB97"/>
+        </svg>
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Small Space Living</div>
+        <div class="blog-title">10 Design Moves That Make a 2BHK Feel Like a Penthouse</div>
+        <p class="blog-excerpt">Light, mirrors, built-ins, and one bold statement piece — our toolkit for making every square foot count in urban apartments.</p>
+        <div class="blog-meta">Sneha Iyer · 18 Feb 2025 · 8 min read</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-tag">Client voices</div>
+  <h2 class="section-title">What Our Clients Say</h2>
+  <div class="reviews-layout">
+    <div>
+      <div class="review-score-box">
+        <div class="score-big">4.9</div>
+        <div class="score-stars">★★★★★</div>
+        <div class="score-count">Based on 94 reviews</div>
+        <div class="score-bars" style="margin-top:1.5rem;">
+          <div class="score-bar-row"><span class="score-bar-label">5</span><div class="score-bar-track"><div class="score-bar-fill" style="width:88%"></div></div></div>
+          <div class="score-bar-row"><span class="score-bar-label">4</span><div class="score-bar-track"><div class="score-bar-fill" style="width:10%"></div></div></div>
+          <div class="score-bar-row"><span class="score-bar-label">3</span><div class="score-bar-track"><div class="score-bar-fill" style="width:2%"></div></div></div>
+          <div class="score-bar-row"><span class="score-bar-label">2</span><div class="score-bar-track"><div class="score-bar-fill" style="width:0%"></div></div></div>
+          <div class="score-bar-row"><span class="score-bar-label">1</span><div class="score-bar-track"><div class="score-bar-fill" style="width:0%"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-list">
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Working with Aura was transformative — they listened to us in ways other studios never had. Our apartment now feels like it was designed for us and only us. The Meridian project exceeded every expectation."</p>
+        <div class="review-meta">
+          <div class="reviewer-avatar">RK</div>
+          <div>
+            <div class="reviewer-name">Rohit & Kavita Narasimhan</div>
+            <div class="reviewer-project">Meridian Penthouse, Hyderabad · 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The Nexus HQ project was complex — 8,000 sq ft, 6-week timeline, zero tolerance for disruption. Aura delivered on time, on budget, and created a workspace our employees genuinely love coming into every morning."</p>
+        <div class="review-meta">
+          <div class="reviewer-avatar">AS</div>
+          <div>
+            <div class="reviewer-name">Aditya Subramaniam</div>
+            <div class="reviewer-project">Nexus HQ Workspace, Chennai · 2023</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-item">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I was skeptical about the budget but Aura showed us how to invest wisely. The Ivory's interiors have become our biggest talking point with guests — we've had three new bookings this week citing the design specifically."</p>
+        <div class="review-meta">
+          <div class="reviewer-avatar">MP</div>
+          <div>
+            <div class="reviewer-name">Meenakshi & Pavan D'Souza</div>
+            <div class="reviewer-project">Ivory Boutique Hotel, Goa · 2022</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">Let's talk</div>
+  <h2 class="section-title" style="color:var(--cream)">Start Your Design Journey</h2>
+  <div class="contact-grid">
+    <div>
+      <p style="color:var(--stone);font-size:.95rem;line-height:1.75;margin-bottom:2.5rem;">Every great space begins with a conversation. Tell us about your project and we'll respond within 24 hours.</p>
+      <div class="contact-info-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Studio Address</div>
+          <div class="contact-value">42 Design District, Banjara Hills<br>Hyderabad, Telangana 500 034</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-.52a2 2 0 012.11.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+91 40 4567 8901</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">hello@aurainteriors.in<br>projects@aurainteriors.in</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Studio Hours</div>
+          <div class="contact-value">Mon – Sat: 9:30 AM – 7:00 PM<br>Sunday by appointment only</div>
+        </div>
+      </div>
+      <div class="contact-social">
+        <button class="social-btn" title="Instagram" onclick="alert('Instagram: @aurainteriors.in')">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </button>
+        <button class="social-btn" title="Pinterest" onclick="alert('Pinterest: pinterest.com/aurainteriors')">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.16 1.22-5.16s-.31-.62-.31-1.54c0-1.45.84-2.53 1.88-2.53.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.48-.25 1.04.52 1.89 1.54 1.89 1.85 0 3.27-1.95 3.27-4.76 0-2.49-1.79-4.23-4.34-4.23-2.96 0-4.7 2.22-4.7 4.51 0 .89.34 1.85.77 2.37.08.1.09.19.07.29l-.29 1.17c-.05.19-.16.23-.37.14C5.59 14.97 4.95 13.03 4.95 11.5c0-3.26 2.37-6.26 6.83-6.26 3.59 0 6.38 2.56 6.38 5.97 0 3.57-2.25 6.44-5.37 6.44-1.05 0-2.04-.54-2.37-1.18l-.65 2.42c-.23.9-.86 2.02-1.29 2.71.97.3 2 .46 3.06.46 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        </button>
+        <button class="social-btn" title="LinkedIn" onclick="alert('LinkedIn: linkedin.com/company/aura-interiors')">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </button>
+        <button class="social-btn" title="WhatsApp" onclick="alert('WhatsApp: +91 98765 43210')">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        </button>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 98765 43210">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+          <label>Project Type</label>
+          <select>
+            <option value="">Select a service</option>
+            <option>Residential Design</option>
+            <option>Commercial Space</option>
+            <option>3D Visualization</option>
+            <option>Custom Furniture</option>
+            <option>Project Management</option>
+            <option>Styling & Staging</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Budget Range</label>
+          <select>
+            <option value="">Approximate budget</option>
+            <option>Under ₹10 Lakhs</option>
+            <option>₹10 – 25 Lakhs</option>
+            <option>₹25 – 50 Lakhs</option>
+            <option>₹50 Lakhs – 1 Cr</option>
+            <option>Above ₹1 Crore</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Project</label>
+          <textarea rows="4" placeholder="Describe your space, vision, and any specific requirements..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="alert('Thank you! We'll get back to you within 24 hours.')">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Aura <span>Interiors</span></div>
+  <div class="footer-copy">© 2025 Aura Interiors Pvt. Ltd. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- CHAT WIDGET -->
+<button id="chat-btn" onclick="toggleChat()" title="Chat with us">
+  <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+</button>
+
+<div id="chat-panel">
+  <div class="chat-header">
+    <div>
+      <div class="chat-title">Aura Interiors Support</div>
+      <div class="chat-status"><span class="chat-dot"></span> Online now</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chat-msgs">
+    <div class="msg msg-bot">Hello! 👋 Welcome to Aura Interiors. How can I help you today?</div>
+    <div class="msg msg-bot">You can ask about our services, projects, pricing, or schedule a free consultation.</div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Type a message…" onkeypress="handleKey(event)">
+    <button id="chat-send" onclick="sendMsg()">
+      <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  function toggleChat() {
+    const panel = document.getElementById('chat-panel');
+    panel.classList.toggle('open');
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter') sendMsg();
+  }
+
+  const replies = {
+    'hello': "Hi there! How can we help you design your dream space?",
+    'hi': "Hey! Great to hear from you. What kind of project are you planning?",
+    'pricing': "Our residential projects typically start from ₹8 Lakhs. Commercial projects vary by scope. We'd love to give you a custom quote — shall I connect you with a designer?",
+    'consultation': "We offer free 30-minute consultations! You can book via our contact form or call us at +91 40 4567 8901.",
+    'services': "We offer Residential Design, Commercial Spaces, 3D Visualization, Custom Furniture, Project Management, and Styling & Staging.",
+    'projects': "We've completed 180+ projects across India — from penthouses in Hyderabad to boutique hotels in Goa! Check out our portfolio above.",
+    'contact': "You can reach us at hello@aurainteriors.in or call +91 40 4567 8901. We're in Hyderabad, Banjara Hills.",
+    'email': "Our official emails are hello@aurainteriors.in (general) and projects@aurainteriors.in (project inquiries).",
+    'phone': "You can call us at +91 40 4567 8901. Studio hours are Mon–Sat, 9:30 AM to 7:00 PM.",
+    'default': "Thanks for reaching out! For a detailed conversation, please fill in our contact form or email us at hello@aurainteriors.in — a designer will get back to you within 24 hours."
+  };
+
+  function sendMsg() {
+    const input = document.getElementById('chat-input');
+    const msgs = document.getElementById('chat-msgs');
+    const text = input.value.trim();
+    if (!text) return;
+    const userDiv = document.createElement('div');
+    userDiv.className = 'msg msg-user';
+    userDiv.textContent = text;
+    msgs.appendChild(userDiv);
+    input.value = '';
+    msgs.scrollTop = msgs.scrollHeight;
+
+    setTimeout(() => {
+      const lc = text.toLowerCase();
+      let reply = replies.default;
+      for (const key of Object.keys(replies)) {
+        if (lc.includes(key)) { reply = replies[key]; break; }
+      }
+      const botDiv = document.createElement('div');
+      botDiv.className = 'msg msg-bot';
+      botDiv.textContent = reply;
+      msgs.appendChild(botDiv);
+      msgs.scrollTop = msgs.scrollHeight;
+    }, 700);
+  }
+</script>
+</body>
+</html>
